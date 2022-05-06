@@ -1,0 +1,10 @@
+scipy
+matplotlib
+scikit-learn
+pandas
+opencv-python
+cmdstanpy
+pymc3
+statsmodels
+pyro-ppl
+seaborn

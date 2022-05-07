@@ -8,3 +8,6 @@ pymc3
 statsmodels
 pyro-ppl
 seaborn
+jupyter
+openpyxl
+pingouin

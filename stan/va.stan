@@ -1,8 +1,8 @@
 data {
-   int<lower=0> N;
-   int<lower=0> J;
-   int<lower=1> R;
-   real x[N,J,R];
+   int<lower=0> N; // Number of objects measured
+   int<lower=0> J; // Number of judges
+   int<lower=1> R; // Repetitions of measurements performed by each judge.
+   array [N,J,R] real x;
    real l_mu,u_mu;
    real l_sigma_T,u_sigma_T;
    //real l_sigma_E,u_sigma_E;
@@ -12,12 +12,12 @@ data {
  
  parameters {
    real<lower=l_mu,upper=u_mu> mu;
-   real<lower=l_sigma_T,upper=u_sigma_T> sigma_T;
-   real<lower=l_sigma_J,upper=u_sigma_J> sigma_J;
+   real<lower=l_sigma_T,upper=u_sigma_T> sigma_T; // Inherent object variance
+   real<lower=l_sigma_J,upper=u_sigma_J> sigma_J; // Inter-observer variance
    //real<lower=l_sigma_E,upper=u_sigma_J> sigma_E;
-   real<lower=l_sigma_I,upper=u_sigma_I> sigma_I[J];
-   real a[J];
-   real b[N];
+   array [J] real<lower=l_sigma_I,upper=u_sigma_I> sigma_I; // Intra-observer variances
+   array [J] real a; // Bias of the judges
+   array [N] real b; // Movement of the object
  }
  
  model {
